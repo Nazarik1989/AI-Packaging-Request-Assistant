@@ -1,0 +1,11 @@
+services:
+  ai-packaging-demo:
+    build: .
+    container_name: ai-packaging-demo
+    restart: unless-stopped
+    environment:
+      DEMO_ACCESS_CODE: ${DEMO_ACCESS_CODE:-pilot-2026}
+      NODE_ENV: production
+      PORT: 3000
+    ports:
+      - "3000:3000"
