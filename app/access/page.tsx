@@ -2,9 +2,40 @@
 
 import { LockKeyhole, LogIn } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { FormEvent, useState } from "react";
+import { FormEvent, Suspense, useState } from "react";
 
 export default function AccessPage() {
+  return (
+    <Suspense fallback={<AccessShell />}>
+      <AccessForm />
+    </Suspense>
+  );
+}
+
+function AccessShell() {
+  return (
+    <main className="flex min-h-screen items-center justify-center px-4 py-8">
+      <section className="panel w-full max-w-md rounded-lg p-6">
+        <div className="mb-5 flex items-center gap-3">
+          <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-graphite-900 text-white">
+            <LockKeyhole size={22} />
+          </span>
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-wide text-signal-600">
+              Демо-доступ
+            </p>
+            <h1 className="text-2xl font-semibold text-graphite-900">
+              Введите код доступа
+            </h1>
+          </div>
+        </div>
+        <p className="text-sm leading-6 text-graphite-600">Загружаем форму доступа...</p>
+      </section>
+    </main>
+  );
+}
+
+function AccessForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [code, setCode] = useState("");
