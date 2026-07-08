@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
     maxAge: 60 * 60 * 24 * 14,
     path: "/",
     sameSite: "lax",
-    secure: process.env.NODE_ENV === "production",
+    secure: request.headers.get("x-forwarded-proto") === "https",
   });
 
   return response;
