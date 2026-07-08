@@ -10,11 +10,44 @@ export function middleware(request: NextRequest) {
   }
 
   const { pathname } = request.nextUrl;
+  const isAccessPage = pathname.startsWith("/access");
+
+  if (isAccessPage) {
+    const submittedCode = request.nextUrl.searchParams.get("code")?.trim();
+
+    if (!submittedCode) {
+      return NextResponse.next();
+    }
+
+    if (submittedCode !== accessCode) {
+      const retryUrl = request.nextUrl.clone();
+      retryUrl.pathname = "/access";
+      retryUrl.search = "";
+      retryUrl.searchParams.set("error", "1");
+      return NextResponse.redirect(retryUrl);
+    }
+
+    const redirectUrl = request.nextUrl.clone();
+    redirectUrl.pathname = request.nextUrl.searchParams.get("next") || "/";
+    redirectUrl.search = "";
+
+    const response = NextResponse.redirect(redirectUrl);
+    response.cookies.set("demo_access", "granted", {
+      httpOnly: true,
+      maxAge: 60 * 60 * 24 * 14,
+      path: "/",
+      sameSite: "lax",
+      secure: request.headers.get("x-forwarded-proto") === "https",
+    });
+
+    return response;
+  }
+
   const isProtected = protectedPaths.some(
     (path) => pathname === path || pathname.startsWith(`${path}/`),
   );
 
-  if (!isProtected || pathname.startsWith("/access")) {
+  if (!isProtected) {
     return NextResponse.next();
   }
 
