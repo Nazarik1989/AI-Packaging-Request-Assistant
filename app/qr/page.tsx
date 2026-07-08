@@ -1,5 +1,6 @@
 import { ArrowRight, ExternalLink } from "lucide-react";
 import Link from "next/link";
+import { DemoQrCode } from "@/components/DemoQrCode";
 
 export default function QrPage() {
   return (
@@ -39,28 +40,17 @@ export default function QrPage() {
         </div>
 
         <aside className="panel rounded-lg p-6">
-          <div className="mb-6 aspect-square rounded-lg border border-graphite-100 bg-white p-5">
-            <div className="grid h-full grid-cols-5 grid-rows-5 gap-2">
-              {Array.from({ length: 25 }).map((_, index) => (
-                <div
-                  className={`rounded-sm ${
-                    [0, 1, 2, 5, 10, 12, 14, 18, 20, 21, 22, 24].includes(index)
-                      ? "bg-graphite-900"
-                      : [6, 8, 16, 23].includes(index)
-                        ? "bg-signal-600"
-                        : "bg-graphite-100"
-                  }`}
-                  key={index}
-                />
-              ))}
-            </div>
-          </div>
-          <p className="mb-3 text-sm text-graphite-600">
+          <DemoQrCode />
+          <p className="mb-3 text-sm leading-6 text-graphite-600">
             Автор: сотрудник завода, развивающийся в направлении AI-архитектуры и прикладных
             AI-агентов.
           </p>
-          <p className="text-sm font-medium text-graphite-900">
-            Прототип демонстрационный. Не использует внутренние данные.
+          <p className="mb-3 text-sm leading-6 text-graphite-600">
+            Собрано как инициатива по цифровой оптимизации рутинных процессов.
+          </p>
+          <p className="text-sm font-medium leading-6 text-graphite-900">
+            Прототип демонстрационный: без внутренних данных и без подключения к системам
+            компании.
           </p>
         </aside>
       </section>
