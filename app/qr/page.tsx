@@ -33,7 +33,7 @@ export default function QrPage() {
               className="focus-ring inline-flex items-center justify-center gap-2 rounded-lg border border-graphite-300 bg-white px-5 py-3 font-semibold text-graphite-900 hover:border-signal-500"
               href="/"
             >
-              Открыть описание
+              Зачем это заводу
               <ExternalLink size={18} />
             </Link>
           </div>
@@ -42,8 +42,7 @@ export default function QrPage() {
         <aside className="panel rounded-lg p-6">
           <DemoQrCode />
           <p className="mb-3 text-sm leading-6 text-graphite-600">
-            Автор: сотрудник завода, развивающийся в направлении AI-архитектуры и прикладных
-            AI-агентов.
+            Автор: сотрудник завода.
           </p>
           <p className="mb-3 text-sm leading-6 text-graphite-600">
             Собрано как инициатива по цифровой оптимизации рутинных процессов.

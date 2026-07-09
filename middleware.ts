@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const protectedPaths = ["/", "/demo", "/qr"];
+const publicPaths = ["/qr"];
 
 export function middleware(request: NextRequest) {
   const accessCode = process.env.DEMO_ACCESS_CODE;
@@ -43,11 +43,11 @@ export function middleware(request: NextRequest) {
     return response;
   }
 
-  const isProtected = protectedPaths.some(
+  const isPublic = publicPaths.some(
     (path) => pathname === path || pathname.startsWith(`${path}/`),
   );
 
-  if (!isProtected) {
+  if (isPublic) {
     return NextResponse.next();
   }
 

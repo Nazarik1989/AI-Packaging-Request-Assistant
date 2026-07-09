@@ -6,17 +6,17 @@ import { QRCodeSVG } from "qrcode.react";
 const configuredUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
 export function DemoQrCode() {
-  const [demoUrl, setDemoUrl] = useState(() =>
-    configuredUrl ? `${trimTrailingSlash(configuredUrl)}/demo` : "/demo",
+  const [offerUrl, setOfferUrl] = useState(() =>
+    configuredUrl ? `${trimTrailingSlash(configuredUrl)}/qr` : "/qr",
   );
 
   useEffect(() => {
     if (configuredUrl) {
-      setDemoUrl(`${trimTrailingSlash(configuredUrl)}/demo`);
+      setOfferUrl(`${trimTrailingSlash(configuredUrl)}/qr`);
       return;
     }
 
-    setDemoUrl(`${window.location.origin}/demo`);
+    setOfferUrl(`${window.location.origin}/qr`);
   }, []);
 
   return (
@@ -28,11 +28,11 @@ export function DemoQrCode() {
           includeMargin
           level="M"
           size={220}
-          value={demoUrl}
+          value={offerUrl}
         />
       </div>
       <p className="mt-4 text-center text-sm font-medium text-graphite-700">
-        Сканируйте, чтобы открыть прототип
+        Сканируйте, чтобы открыть страницу предложения
       </p>
     </div>
   );
