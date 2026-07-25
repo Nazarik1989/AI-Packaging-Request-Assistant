@@ -1,124 +1,123 @@
-# AI-упаковщик заявки
+<p align="center">
+  <img src="./docs/assets/avatar.webp" width="230" alt="Packaging AI avatar" />
+</p>
 
-Демонстрационный веб-прототип на Next.js 14, TypeScript и Tailwind CSS для производственной компании гибкой упаковки.
+<h1 align="center">Packaging Request Assistant</h1>
 
-Проект показывает, как AI-агент может помочь клиенту сформулировать первичную заявку и превратить разрозненный запрос в структурированную карточку для менеджера.
+<p align="center">
+  <strong>A guided manufacturing-intake prototype that turns incomplete packaging requests into structured manager-ready briefs.</strong>
+</p>
 
-Важно: это демо AI-пилота. Прототип не является официальным проектом какой-либо компании, не использует внутренние данные и не подключен к корпоративным системам.
+<p align="center">
+  <img src="https://img.shields.io/badge/Next.js-14-000000?style=flat-square&logo=nextdotjs" alt="Next.js" />
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" alt="Tailwind CSS" />
+  <img src="https://img.shields.io/badge/Status-Demo_Prototype-419DFF?style=flat-square" alt="Status" />
+</p>
 
-## Как запустить
+> This is an independent demonstration prototype. It is not an official project of any company, does not use internal company data and is not connected to corporate systems.
 
-Если вы не разработчик: проще всего открывать уже опубликованную ссылку на сайт. Команды ниже нужны только тому, кто запускает проект у себя на компьютере или готовит его к публикации.
+## The problem
 
-### Локальный запуск на своем компьютере
+Manufacturing requests often arrive incomplete: dimensions are missing, materials are unclear, print requirements are vague and the manager must reconstruct the real need through multiple messages.
 
-1. Установите Node.js LTS: https://nodejs.org
-2. Откройте PowerShell или терминал.
-3. Перейдите в папку проекта:
+This prototype demonstrates a better first step:
 
-```powershell
-cd C:\Projects\AI-упаковщик
-```
+1. guide the client through a compact conversational intake;
+2. ask only the clarifying questions relevant to previous answers;
+3. show how complete the request is;
+4. generate a structured brief for the manager;
+5. prepare a clean reply to the client.
 
-4. Установите зависимости:
+---
+
+## Workflow
+
+<p align="center">
+  <img src="./docs/assets/architecture.svg" width="100%" alt="Packaging request workflow" />
+</p>
+
+---
+
+## What the prototype demonstrates
+
+- landing and positioning page;
+- QR-friendly entry point;
+- step-by-step chat interface;
+- adaptive clarifying questions;
+- request completeness score from 0 to 100%;
+- structured manager card;
+- manager notes and client reply draft;
+- clipboard copy and `.txt` export;
+- optional demo access code;
+- Docker/VPS deployment path.
+
+---
+
+## Local development
+
+Node.js LTS and `pnpm`/`npm` are required according to the project setup.
 
 ```bash
 npm install
-```
-
-5. Запустите сайт:
-
-```bash
 npm run dev
 ```
 
-6. Откройте в браузере:
+Open:
 
 ```text
 http://localhost:3000
 ```
 
-Пока команда `npm run dev` работает, сайт доступен в браузере. Чтобы остановить локальный сайт, нажмите `Ctrl + C` в терминале.
+To stop the development server, press `Ctrl + C`.
 
-## Как показать проект другим людям
+---
 
-Не отправляйте людям папку с проектом, если они не разработчики. Скорее всего, они не будут устанавливать Node.js и запускать команды.
+## Demo access
 
-Лучший вариант: опубликовать проект на Vercel и отправить обычную ссылку. Для первых показов лучше включить код доступа: ссылка будет открываться у всех, но демо увидят только те, кому вы дали код.
+The prototype supports an optional access code through an environment variable:
 
-Если Vercel или Netlify не подходят, проект можно выложить на свой VPS. Для этого добавлены `Dockerfile`, `docker-compose.yml` и инструкция [VPS_DEPLOY.md](./VPS_DEPLOY.md).
-
-### Публикация на Vercel
-
-1. Создайте аккаунт на https://vercel.com
-2. Загрузите проект в GitHub.
-3. В Vercel нажмите `Add New Project`.
-4. Выберите репозиторий с этим проектом.
-5. Оставьте настройки по умолчанию для Next.js.
-6. Если нужен доступ по коду, в настройках проекта откройте `Settings` -> `Environment Variables`.
-7. Добавьте переменную:
-
-```text
-DEMO_ACCESS_CODE=ваш-код-доступа
-```
-
-Пример:
-
-```text
+```dotenv
 DEMO_ACCESS_CODE=pilot-2026
 ```
 
-8. Нажмите `Deploy`.
-9. После публикации Vercel даст ссылку вида:
+When the variable is omitted, the demo opens without a code.
 
-```text
-https://your-project-name.vercel.app
-```
+The access code is a presentation convenience, not a security control. Do not place confidential, commercial or personal data inside the public demo.
 
-Вот эту ссылку уже можно отправлять людям или зашить в QR-код. Если задан `DEMO_ACCESS_CODE`, вместе со ссылкой отправьте код доступа.
+---
 
-Если переменную `DEMO_ACCESS_CODE` не задавать, сайт будет открываться без кода.
+## Deployment
 
-### Что писать человеку вместе со ссылкой
+### Vercel
 
-```text
-Я собрал короткий демо-прототип AI-агента для первичной обработки заявок на гибкую упаковку.
+1. import the GitHub repository;
+2. keep the default Next.js settings;
+3. add `DEMO_ACCESS_CODE` when a closed demonstration is preferred;
+4. deploy and share the resulting URL.
 
-Откройте ссылку, нажмите "Открыть демо" и пройдите сценарий как клиент.
+### VPS
 
-Код доступа: [вставить код]
+The repository includes Docker and VPS deployment material for environments where Vercel or Netlify are not appropriate.
 
-Прототип демонстрационный: он не подключен к внутренним системам и не использует реальные данные компании.
-```
+---
 
-## Публично или по коду
+## Adapting the prototype
 
-Для внутреннего обсуждения и первых показов потенциальным клиентам рекомендуется режим по коду доступа через `DEMO_ACCESS_CODE`.
+A real pilot would normally require:
 
-Для широкой презентации, портфолио или открытого QR можно убрать переменную `DEMO_ACCESS_CODE`, тогда сайт станет доступен без ввода кода.
+- company-specific packaging types and terminology;
+- an approved request data model;
+- scoring rules agreed with sales and production teams;
+- clear CRM/ERP integration boundaries;
+- a data-classification policy;
+- ownership for validation and human review;
+- model integration only after privacy and commercial-data rules are approved.
 
-Важно: код доступа в этом проекте нужен для аккуратной демонстрации, а не для защиты секретной информации. Не размещайте в демо внутренние данные, коммерческие документы или персональные данные.
+---
 
-## Что демонстрирует
+## Responsible data use
 
-- Главную страницу с описанием проблемы и решения.
-- Страницу `/qr` с коротким оффером для показа через QR.
-- Страницу `/demo` с пошаговым чат-интерфейсом AI-агента.
-- Формирование карточки заявки для менеджера.
-- Автоматический список уточнений, зависящий от ответов.
-- Черновик ответа клиенту.
-- Оценку готовности заявки от 0 до 100%.
-- Копирование карточки в буфер и скачивание `.txt`.
+Do not use internal documents, pricing, customer personal data, employee data or commercial secrets without authorization. Demonstration scenarios should use synthetic examples.
 
-## Как адаптировать под реальное предприятие
-
-1. Заменить демонстрационные варианты отраслей и типов упаковки в `components/DemoChat.tsx`.
-2. Расширить типы заявки в `types/application.ts`.
-3. Настроить правила оценки в `lib/leadScoring.ts`.
-4. Дополнить менеджерские подсказки в `lib/generateManagerNotes.ts`.
-5. Подключить реальный AI API только после согласования политики данных.
-6. Перед интеграцией с CRM или ERP описать, какие поля можно передавать и кто отвечает за доступ.
-
-## Предупреждение по данным
-
-Не используйте внутренние данные, коммерческую информацию, персональные данные сотрудников или клиентов без разрешения. Для презентации и тестирования достаточно демонстрационных примеров.
+Built by [Nazar Zykov](https://github.com/Nazarik1989).
