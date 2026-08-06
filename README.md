@@ -121,3 +121,11 @@ A real pilot would normally require:
 Do not use internal documents, pricing, customer personal data, employee data or commercial secrets without authorization. Demonstration scenarios should use synthetic examples.
 
 Built by [Nazar Zykov](https://github.com/Nazarik1989).
+
+---
+
+## Naz AI Lab
+
+This project is part of [Naz AI Lab](https://naz-ai-lab.ru/) — the digital laboratory of [Nazar Zykov](https://naz-ai-lab.ru/creator/).
+
+[Official project page](https://naz-ai-lab.ru/projects/ai-packager/) · [All Naz AI Lab projects](https://naz-ai-lab.ru/projects/)
