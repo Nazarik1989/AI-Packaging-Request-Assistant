@@ -53,9 +53,12 @@ textarea {
 .qr-code-static {
   display: block;
   width: 220px;
-  height: 220px;
-  flex: 0 0 220px;
-  background: #ffffff url("/qr-demo.svg") center / contain no-repeat;
+  height: auto;
+  max-width: 100%;
+  aspect-ratio: 1 / 1;
+  flex: 0 1 220px;
+  object-fit: contain;
+  background: #ffffff;
 }
 
 .focus-ring {
