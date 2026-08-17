@@ -44,15 +44,18 @@ textarea {
 }
 
 .qr-code-surface,
-.qr-code-surface canvas {
+.qr-code-static {
   color-scheme: only light;
   forced-color-adjust: none;
   filter: none !important;
 }
 
-.qr-code-surface canvas {
+.qr-code-static {
   display: block;
-  background: #ffffff;
+  width: 220px;
+  height: 220px;
+  flex: 0 0 220px;
+  background: #ffffff url("/qr-demo.svg") center / contain no-repeat;
 }
 
 .focus-ring {
